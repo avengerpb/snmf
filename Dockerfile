@@ -5,6 +5,7 @@ RUN apt-get install perl -y
 RUN apt-get install gcc -y 
 RUN apt-get install bioperl -y
 RUN apt-get install libpar-packer-perl -y
+RUN apt-get install wget -y
 
 
 RUN mkdir /tool
@@ -33,3 +34,4 @@ RUN apt-get purge gcc -y
 RUN apt-get purge bioperl -y
 RUN apt-get purge libpar-packer-perl -y
 RUN apt-get purge perl -y
+RUN rm -f /usr/local/bin/wget
