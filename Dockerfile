@@ -17,7 +17,7 @@ WORKDIR /tool
 RUN wget http://membres-timc.imag.fr/Olivier.Francois/snmf/files/sNMF_CL_v1.2.zip 
 RUN unzip sNMF_CL_v1.2.zip
 RUN rm sNMF_CL_v1.2.zip
-RUN cp sNMF_CL_v1.2/ ./
+RUN mv sNMF_CL_v1.2/* ./
 RUN rm -rf sNMF_CL_v1.2/
 RUN rm -rf examples/
 RUN rm -rf documentation/
