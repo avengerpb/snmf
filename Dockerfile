@@ -2,7 +2,7 @@ FROM ubuntu
 RUN apt-get update
 
 RUN apt-get install perl -y
-RUN apt-get install gcc -y 
+RUN apt-get install apt-get install build-essential -y 
 RUN apt-get install bioperl -y
 RUN apt-get install libpar-packer-perl -y
 RUN apt-get install wget -y
