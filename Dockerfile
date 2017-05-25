@@ -31,7 +31,7 @@ RUN ./install.command
 
 RUN pp -o snmf Snmf.pl
 
-RUN apt-get purge gcc -y
+RUN apt-get purge build-essential -y
 RUN apt-get purge bioperl -y
 RUN apt-get purge libpar-packer-perl -y
 RUN apt-get purge perl -y
