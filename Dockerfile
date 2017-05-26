@@ -6,6 +6,7 @@ RUN apt-get install build-essential -y
 RUN apt-get install bioperl -y
 RUN apt-get install libpar-packer-perl -y
 RUN apt-get install wget -y
+RUN apt-get install libswitch-perl -y
 
 
 RUN mkdir /tool
@@ -35,4 +36,5 @@ RUN apt-get purge build-essential -y
 RUN apt-get purge bioperl -y
 RUN apt-get purge libpar-packer-perl -y
 RUN apt-get purge perl -y
+RUN apt-get libswitch-perl -y
 RUN rm -f /usr/local/bin/wget
