@@ -29,12 +29,13 @@ RUN chmod +x $HOME/snmf.sh
 RUN chmod +x plink
 RUN chmod +x install.command
 RUN ./install.command
+RUN ln -s /tool/bin/sNMF /usr/bin/ 
 
-RUN pp -o snmf Snmf.pl
+RUN pp -o run_pipeline Snmf.pl
 
 RUN apt-get purge build-essential -y
 RUN apt-get purge bioperl -y
 RUN apt-get purge libpar-packer-perl -y
 RUN apt-get purge perl -y
-RUN apt-get libswitch-perl -y
+RUN apt-get purge libswitch-perl -y
 RUN rm -f /usr/local/bin/wget
