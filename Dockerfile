@@ -1,41 +1,34 @@
 FROM ubuntu
-RUN apt-get update
 
-RUN apt-get install perl -y
-RUN apt-get install build-essential -y 
-RUN apt-get install bioperl -y
-RUN apt-get install libpar-packer-perl -y
-RUN apt-get install wget -y
-RUN apt-get install libswitch-perl -y
-
-
-RUN mkdir /tool
 ENV HOME=/tool
-RUN chmod -R 777 /tool
-
-WORKDIR /tool
-
-RUN wget http://membres-timc.imag.fr/Olivier.Francois/snmf/files/sNMF_CL_v1.2.zip 
-RUN unzip sNMF_CL_v1.2.zip
-RUN rm sNMF_CL_v1.2.zip
-RUN mv sNMF_CL_v1.2/* ./
-RUN rm -rf sNMF_CL_v1.2/
-RUN rm -rf examples/
-RUN rm -rf documentation/
-RUN rm README
-
+WORKDIR $HOME
 ADD ./* $HOME/
-RUN chmod +x $HOME/snmf.sh
-RUN chmod +x plink
-RUN chmod +x install.command
-RUN ./install.command
-RUN ln -s /tool/bin/sNMF /usr/bin/ 
-
-RUN pp -o run_pipeline Snmf.pl
-
-RUN apt-get purge build-essential -y
-RUN apt-get purge bioperl -y
-RUN apt-get purge libpar-packer-perl -y
-RUN apt-get purge perl -y
-RUN apt-get purge libswitch-perl -y
-RUN rm -f /usr/local/bin/wget
+RUN	apt-get update && \
+	apt-get install perl -y && \
+	apt-get install build-essential -y && \
+	apt-get install bioperl -y && \
+	apt-get install libpar-packer-perl -y && \
+	apt-get install wget -y && \
+	apt-get install libswitch-perl -y && \
+	chmod -R 777 $HOME && \
+	wget http://membres-timc.imag.fr/Olivier.Francois/snmf/files/sNMF_CL_v1.2.zip && \ 
+	unzip sNMF_CL_v1.2.zip && \
+	rm sNMF_CL_v1.2.zip && \
+	mv sNMF_CL_v1.2/* ./ && \
+	rm -rf sNMF_CL_v1.2/ && \
+	rm -rf examples/ && \
+	rm -rf documentation/ && \
+	rm README && \
+	chmod +x $HOME/snmf.sh && \
+	chmod +x plink && \
+	chmod +x install.command && \
+	./install.command && \
+	ln -s /tool/bin/sNMF /usr/bin/ && \
+	pp -o run_pipeline Snmf.pl && \
+	apt-get purge build-essential -y && \
+	apt-get purge bioperl -y && \
+	apt-get purge libpar-packer-perl -y && \
+	apt-get purge perl -y && \
+	apt-get purge libswitch-perl -y && \
+	rm -f /usr/local/bin/wget && \
+	apt-get autoremove -y 
